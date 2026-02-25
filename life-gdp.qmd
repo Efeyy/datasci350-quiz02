@@ -20,3 +20,24 @@ plt.ylabel("Life Expectancy")
 plt.title("Life Expectancy vs GDP per Capita")
 plt.show()
 ```
+
+## Interactive Map (2007)
+
+```{python}
+import plotly.express as px
+
+df = pd.read_csv("gapminder.csv")
+df2007 = df[df["year"] == 2007]
+
+fig = px.scatter_geo(
+    df2007,
+    locations="country",
+    locationmode="country names",
+    size="population_millions",
+    color="life_expectancy",
+    projection="natural earth",
+    title="Life Expectancy in 2007"
+)
+
+fig.show()
+```
